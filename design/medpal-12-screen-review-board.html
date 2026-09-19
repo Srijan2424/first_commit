@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MedPal — 12 Screen Review</title>
+  <style>
+    :root{--navy:#071827;--raised:#102536;--bone:#f3eee5;--ink:#182029;--mint:#8be2b6;--coral:#ff735f;--blue:#4aa8ff;--muted:#89939a;--amber:#f0b45a}
+    *{box-sizing:border-box} body{margin:0;background:var(--navy);color:var(--bone);font:15px/1.45 Inter,system-ui,sans-serif}
+    header{padding:34px 4vw 26px;border-bottom:1px solid #ffffff26;position:sticky;top:0;background:#071827ee;backdrop-filter:blur(12px);z-index:3}
+    h1,h2{font-family:Georgia,serif;margin:0} h1{font-size:clamp(36px,5vw,68px)} header p{max-width:820px;color:#cbd2d5;margin:8px 0 0}
+    .key{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13px}.key span{border:1px solid #ffffff25;border-radius:999px;padding:7px 11px}
+    main{width:min(1500px,94vw);margin:34px auto 80px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:28px}
+    article{background:var(--raised);border:1px solid #ffffff20;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #0005}
+    article img{display:block;width:100%;aspect-ratio:1586/992;object-fit:cover;background:#06131e}
+    .meta{padding:20px}.num{font:12px ui-monospace,monospace;color:var(--mint);letter-spacing:.12em;text-transform:uppercase}.meta h2{font-size:26px;margin:3px 0 12px}
+    .controls{display:grid;grid-template-columns:170px 1fr;gap:10px}.controls select,.controls textarea{width:100%;border:1px solid #ffffff28;border-radius:10px;background:#071827;color:var(--bone);padding:11px;font:inherit}.controls textarea{min-height:72px;resize:vertical}
+    .locked{margin:38px 0 0;padding:24px;border-radius:16px;background:var(--bone);color:var(--ink)}.locked h2{font-size:30px}.locked ul{columns:2;column-gap:36px}.locked li{break-inside:avoid;margin:8px 0}
+    .actions{display:flex;gap:12px;margin-top:18px}.actions button{border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}.primary{background:var(--mint);color:var(--ink)}.secondary{background:transparent;color:var(--bone);border:1px solid #ffffff35!important}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.locked ul{columns:1}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="num">MedPal · UX freeze review</div><h1>The 12-screen journey</h1>
+  <p>Review the product flow from first entry to issued prescription. Choose a status and leave notes under each screen; feedback is saved in this browser. Generated microcopy is illustrative—the locked facts below control the build.</p>
+  <div class="key"><span>Midnight navy</span><span>Doctor: dense + deliberate</span><span>Patient: calm + explanatory</span><span>One primary action per screen</span></div>
+</header>
+<main>
+  <section class="grid" id="screens"></section>
+  <section class="locked">
+    <h2>Locked scenario facts</h2>
+    <ul>
+      <li>Doctor: Dr. Arjun Mehta, MBBS, MD (General Medicine)</li><li>Council: Maharashtra Medical Council</li><li>Registration: MMC-2014-123456 (fictional)</li><li>Clinic: Mehta Family Clinic, Bandra West, Mumbai</li><li>Patient: Priya Desai, 34, MP-240918-1032</li><li>Continue: Metformin 500 mg twice daily</li><li>Change: Amlodipine 5 mg to 10 mg once daily</li><li>Add: Vitamin D3 1000 IU once daily</li><li>Not reviewed: Atorvastatin 10 mg nightly; remains in history only</li><li>Historical: Cetirizine 10 mg, stopped</li><li>Unclear instruction: Ibuprofen 400 mg as needed</li><li>Issued prescription contains only Metformin, Amlodipine 10 mg, and Vitamin D3</li>
+    </ul>
+    <div class="actions"><button class="primary" id="export">Export review notes</button><button class="secondary" id="clear">Clear notes</button></div>
+  </section>
+</main>
+<script>
+const data=[
+['01','Welcome & role selection','medpal-screens/01-welcome-role-selection.png'],['02','Phone sign-in & account OTP','medpal-screens/02-phone-sign-in-account-otp.png'],['03','Patient onboarding & avatar','medpal-screens/03-patient-onboarding-avatar.png'],['04','Doctor profile & credential upload','medpal-screens/04-doctor-profile-credential-upload.png'],['05','Demo verification progress','medpal-screens/05-demo-verification-progress.png'],['06','Doctor home & patient lookup','medpal-screens/06-doctor-home-patient-lookup.png'],['07','Consultation authorization','medpal-screens/07-consultation-authorization.png'],['08','Consultation workspace','medpal-screens/08-consultation-workspace.png'],['09','Medication decision panel','medpal-screens/09-medication-decision-panel.png'],['10','Review & issue','medpal-screens/10-review-and-issue.png'],['11','Patient home & What Changed','medpal-screens/11-patient-home-what-changed.png'],['12','Prescription document','medpal-screens/12-prescription-document.png']];
+const state=JSON.parse(localStorage.getItem('medpal-screen-review')||'{}');
+const root=document.querySelector('#screens');
+for(const [n,title,src] of data){const card=document.createElement('article');card.innerHTML=`<img src="${src}" alt="${title}"><div class="meta"><div class="num">Screen ${n}</div><h2>${title}</h2><div class="controls"><select aria-label="Review status"><option>Needs review</option><option>Approved</option><option>Revise</option></select><textarea placeholder="What should change?"></textarea></div></div>`;const s=card.querySelector('select'),t=card.querySelector('textarea');s.value=state[n]?.status||'Needs review';t.value=state[n]?.notes||'';const save=()=>{state[n]={status:s.value,notes:t.value};localStorage.setItem('medpal-screen-review',JSON.stringify(state))};s.onchange=save;t.oninput=save;root.append(card)}
+document.querySelector('#export').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='medpal-screen-feedback.json';a.click();URL.revokeObjectURL(a.href)};
+document.querySelector('#clear').onclick=()=>{if(confirm('Clear all saved screen feedback?')){localStorage.removeItem('medpal-screen-review');location.reload()}};
+</script>
+</body>
+</html>
