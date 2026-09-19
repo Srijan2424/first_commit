@@ -5,10 +5,13 @@ import { AuthorizationPage, ConsultationPage, DoctorHomePage, MedicationDecision
 import { DoctorCredentialPage } from './pages/DoctorCredentialPage'
 import { PatientOnboardingPage } from './pages/PatientOnboardingPage'
 import { WelcomePage } from './pages/WelcomePage'
+import { scrollToTop } from './lib/scrollToTop'
 
 export default function App() {
   const location = useLocation()
-  useEffect(() => window.scrollTo({ top: 0, left: 0 }), [location.pathname])
+  useEffect(() => {
+    scrollToTop()
+  }, [location.pathname])
   return <Routes>
     <Route path="/" element={<WelcomePage />} />
     <Route path="/sign-in" element={<AuthPage />} />
