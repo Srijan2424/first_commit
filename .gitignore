@@ -22,3 +22,68 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables and local credentials
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!*.env.example
+.npmrc
+.netrc
+credentials
+credentials.*
+secrets/
+*.secret
+*.secrets
+
+# Private keys, signing files, and local certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.ppk
+*.pkcs8
+*.der
+*.jks
+*.keystore
+*.kdbx
+*.mobileprovision
+*.ovpn
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+client_secret_*.json
+service-account*.json
+*-service-account.json
+
+# AWS, Amplify, CDK, and infrastructure state
+.aws/
+.amplify/
+cdk.out/
+.cdk.staging/
+cdk.context.json
+amplify/.config/local-*
+amplify/#current-cloud-backend/
+amplify/.temp/
+amplify/backend/amplify-meta.json
+amplify/team-provider-info.json
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Local MedPal data and uploaded documents
+.medpal-demo/
+
+# Test and build caches
+coverage/
+.nyc_output/
+.vite/
+*.tsbuildinfo
+
+# Public frontend configuration intentionally remains tracked:
+# amplify_outputs.json contains service identifiers and endpoints, not credentials.

@@ -1,0 +1,15 @@
+customHeaders:
+  - pattern: '**'
+    headers:
+      - key: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: Referrer-Policy
+        value: no-referrer
+      - key: X-Frame-Options
+        value: DENY
+      - key: Permissions-Policy
+        value: camera=(self), microphone=(), geolocation=()
+      - key: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self' https://*.amazonaws.com wss://*.amazonaws.com https://rxnav.nlm.nih.gov; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
