@@ -4,8 +4,8 @@
 
 **Track:** Ship It, with consideration for Best UI  
 **Team:** Solo build  
-**Live demo:** https://demo.dperk24dvwjgp.amplifyapp.com  
-**Public repository:** _Add GitHub URL after publishing_  
+**Live demo:** https://main.d2qbejd82l2jqx.amplifyapp.com
+**Public repository:** https://github.com/Srijan2424/first_commit
 **Demo video:** _Add public or unlisted YouTube URL after recording_  
 **AWS Builder Center student verification:** Complete
 
@@ -97,5 +97,3 @@ The current build completes the prescription journey end to end with fictional d
 - Medicine autocomplete uses the public **U.S. National Library of Medicine RxNorm API**, with manual medicine entry available.
 - Open-source libraries and their versions are declared in `package.json` and remain under their respective licences.
 - Every person, clinic, credential, medical detail, and prescription shown in the demo is fictional.
-
-

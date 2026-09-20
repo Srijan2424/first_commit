@@ -4,7 +4,7 @@
 
 MedPal is a consent-first digital prescribing platform for independent clinics. It gives doctors a structured workspace for reviewing a patient's active medicines and issuing a clear prescription, while giving patients a permanent record of what changed, why it changed, and who made the decision.
 
-[**Open the live AWS demo**](https://demo.dperk24dvwjgp.amplifyapp.com) · [Architecture](docs/ARCHITECTURE.md) · [Submission write-up](SUBMISSION.md)
+[**Open the live AWS demo**](https://main.d2qbejd82l2jqx.amplifyapp.com) · [Architecture](docs/ARCHITECTURE.md) · [Submission write-up](SUBMISSION.md)
 
 ![MedPal design direction](design/approved/medpal-approved-direction.png)
 

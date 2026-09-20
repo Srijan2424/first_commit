@@ -169,7 +169,7 @@ export function AuthPage() {
               ) : <p>Enter a fictional 10-digit number. Your code will appear here.</p>}
             </div>
           ) : (
-            <p className="soft-note">This screen uses real SMS login, not demo codes. <a href="https://demo.dperk24dvwjgp.amplifyapp.com/sign-in">Open the working demo</a>, or run <code>npm run demo</code> and open port 4180.</p>
+            <p className="soft-note">This screen uses real SMS login, not demo codes. <a href="https://main.d2qbejd82l2jqx.amplifyapp.com/sign-in">Open the working demo</a>, or run <code>npm run demo</code> and open port 4180.</p>
           )}
           {!cloudConfigured && (
             <p role="status" className="soft-note">

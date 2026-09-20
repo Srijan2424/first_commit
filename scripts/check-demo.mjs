@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 const base=process.argv[2] || 'http://127.0.0.1:4180/api/demo';
 const workspace=randomUUID();
 if(base.startsWith('https:')){
- const preflight=await fetch(`${base}/auth/start`,{method:'OPTIONS',headers:{Origin:'https://demo.dperk24dvwjgp.amplifyapp.com','Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'authorization,content-type'}});
+ const preflight=await fetch(`${base}/auth/start`,{method:'OPTIONS',headers:{Origin:'https://main.d2qbejd82l2jqx.amplifyapp.com','Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'authorization,content-type'}});
  assert(preflight.ok,`Browser preflight failed: ${preflight.status}`);
  assert(preflight.headers.get('access-control-allow-origin'),'Missing browser CORS permission');
  console.log('PASS: browser login preflight');
